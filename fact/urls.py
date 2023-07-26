@@ -16,7 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-from fact import views   # views.index
+from fact import views
+from django.conf import settings
+from django.conf.urls.static import static   # views.index
 # from .views import * # index
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,4 +26,4 @@ urlpatterns = [
     path('display_name/<str:name>/',views.display_name,name ="display_name"),
     path('',include('home.urls'))
     # path('',views.display_page,name="display_page")
-]
+]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

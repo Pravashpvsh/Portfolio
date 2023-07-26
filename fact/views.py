@@ -12,7 +12,7 @@ def display_name(request,name):
 def display_page(request):
     context ={
         'title':"Pravash",
-        'facts_data':"This is a long paragraph that goes on and on...",
+        
         
         
         'mydata': [
