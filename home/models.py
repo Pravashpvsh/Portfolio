@@ -20,5 +20,15 @@ class Client(models.Model):
     project = models.IntegerField(blank=True,null=True)
     awards = models.IntegerField(blank=True,null=True)
     hoursupport = models.IntegerField(blank=True,null=True)
-    display = models.BooleanField(default=True)
     
+
+class contact(models.Model):
+    location =models.CharField(max_length=255,blank=True,null=True)
+    email =models.CharField(max_length=255,blank=True,null=True)
+    call =models.CharField(max_length=255,blank=True,null=True)
+
+class Skill(models.Model):
+    description = models.CharField(max_length=255)
+    name = models.CharField(max_length=50)
+    percentage = models.PositiveIntegerField()
+
