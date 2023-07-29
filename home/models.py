@@ -2,9 +2,7 @@ from django.db import models
 
 class Hero(models.Model):
     title = models.CharField(max_length=255,blank=True,null=True)
-    hero_img =models.ImageField(blank=True,null=True)
-
-
+    
 class socialplatform(models.Model):
     name = models.CharField(max_length=255,blank=True,null=True)
     description = models.CharField(max_length=255,blank=True,null=True)
@@ -57,14 +55,44 @@ class Abouts(models.Model):
     age = models.PositiveIntegerField(blank=True, null=True)
     degree = models.CharField(max_length=100,blank=True, null=True)
     email = models.EmailField(blank=True, null=True)
-    is_freelance_available = models.BooleanField(default=False,blank=True, null=True)
+    
 
 class sdescription(models.Model):
     description = models.TextField(blank=True, null=True) 
     
 
 class services(models.Model):
-    photo = models.ImageField(upload_to='services/', blank=True, null=True)
+    icon = models.CharField(max_length=255,blank=True, null=True)
     title = models.CharField(max_length=255,blank=True, null=True)
     title_description =models.TextField(max_length=255,blank=True, null=True) 
 
+class Project(models.Model):
+    CATEGORY_CHOICES = (
+        ('Web', 'Web'),
+        ('App', 'App'),
+        ('Card', 'Card'),
+    )
+    photo = models.ImageField(upload_to='projects/', blank=True, null=True)
+    category = models.CharField(max_length=10, choices=CATEGORY_CHOICES)
+    name = models.CharField(max_length=255, blank=True, null=True)
+
+
+class ProfessionalExperience(models.Model):
+    job_title = models.CharField(max_length=100,blank=True, null=True)
+    company_name = models.CharField(max_length=100,blank=True, null=True)
+    location = models.CharField(max_length=100,blank=True, null=True)
+    start_date = models.DateField(blank=True, null=True)
+    end_date = models.DateField(blank=True, null=True)
+    responsibilities = models.TextField(blank=True, null=True)
+
+class Summary(models.Model):
+    name = models.CharField(max_length=100,blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
+
+class Education(models.Model):
+    degree = models.CharField(max_length=100,blank=True, null=True)
+    school_name = models.CharField(max_length=100,blank=True, null=True)
+    location = models.CharField(max_length=100,blank=True, null=True)
+    start_date = models.DateField(blank=True, null=True)
+    end_date = models.DateField(blank=True, null=True)
+    description = models.TextField(blank=True, null=True)

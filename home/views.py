@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Hero,Abouts,socialplatform,Client,contact,Skill,Testimonial,services,skiill_description,cSkill,sdescription
+from .models import Hero,Abouts,socialplatform,Client,contact,Skill,Testimonial,services,skiill_description,cSkill,sdescription,Project,Summary, ProfessionalExperience, Education
 
 # Create your views here.
 def display_page(request):
@@ -9,11 +9,15 @@ def display_page(request):
     social_platform = socialplatform.objects.last()
     skiill_descriptions =skiill_description.objects.first()
     cskill = cSkill.objects.all()
+    summaries = Summary.objects.all()
+    experiences = ProfessionalExperience.objects.all()
+    educations = Education.objects.all()
     contacts =contact.objects.all()
     skills = Skill.objects.all()
     testimonials = Testimonial.objects.all()
     service_list = services.objects.all()
     sdescription_list = sdescription.objects.all()
+    projects = Project.objects.all()
      # it gets the first object/item in the Hero table and this will return none if hero object doesnt exits
     if not my_hero:
         my_hero =  Hero.objects.create(title="Pravash") # if not exist we create a new object
@@ -27,6 +31,10 @@ def display_page(request):
         'clients':clients,
         'contacts':contacts,
         'skiill_descriptions':skiill_descriptions,
+        'projects': projects,
+        'summaries': summaries,
+        'experiences': experiences,
+        'educations': educations,
         'skills': skills,
         'cskills':cskill,
         'testimonials': testimonials,
