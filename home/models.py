@@ -2,6 +2,8 @@ from django.db import models
 
 class Hero(models.Model):
     title = models.CharField(max_length=255,blank=True,null=True)
+    photo = models.ImageField(upload_to='hero/', blank=True, null=True)
+
     
 class socialplatform(models.Model):
     name = models.CharField(max_length=255,blank=True,null=True)
@@ -82,7 +84,7 @@ class ProfessionalExperience(models.Model):
     company_name = models.CharField(max_length=100,blank=True, null=True)
     location = models.CharField(max_length=100,blank=True, null=True)
     start_date = models.DateField(blank=True, null=True)
-    end_date = models.DateField(blank=True, null=True)
+    end_date = models.CharField(max_length=100,blank=True, null=True)
     responsibilities = models.TextField(blank=True, null=True)
 
 class Summary(models.Model):
@@ -94,5 +96,11 @@ class Education(models.Model):
     school_name = models.CharField(max_length=100,blank=True, null=True)
     location = models.CharField(max_length=100,blank=True, null=True)
     start_date = models.DateField(blank=True, null=True)
-    end_date = models.DateField(blank=True, null=True)
+    end_date = models.CharField(max_length=100,blank=True, null=True)
     description = models.TextField(blank=True, null=True)
+
+class Message(models.Model):
+    name = models.CharField(max_length=255,blank=True,null=True)
+    email = models.EmailField(blank=False, null=False )
+    message = models.TextField()
+    subject = models.CharField(max_length=255,blank=True,null=True)

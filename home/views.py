@@ -1,5 +1,6 @@
-from django.shortcuts import render
-from .models import Hero,Abouts,socialplatform,Client,contact,Skill,Testimonial,services,skiill_description,cSkill,sdescription,Project,Summary, ProfessionalExperience, Education
+from django.shortcuts import render,redirect
+from django.core.mail import EmailMessage
+from .models import Hero,Abouts,socialplatform,Client,contact,Skill,Testimonial,services,skiill_description,cSkill,sdescription,Project,Summary, ProfessionalExperience, Education,Message
 
 # Create your views here.
 def display_page(request):
@@ -21,11 +22,10 @@ def display_page(request):
      # it gets the first object/item in the Hero table and this will return none if hero object doesnt exits
     if not my_hero:
         my_hero =  Hero.objects.create(title="Pravash") # if not exist we create a new object
- 
 
     context ={
         
-        'title':my_hero.title,
+        'myhero':my_hero,
         'abouts': abouts,
         'social_platform':social_platform,
         'clients':clients,
@@ -47,3 +47,17 @@ def display_page(request):
         ]
     }
     return render(request,'index.html',context)
+
+
+def handle_form(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        message = request.POST.get('message')
+        subject = request.POST.get('subject')
+        
+        mero_message = Message.objects.create(name=name,email=email,message=message,subject=subject)
+        body = "Message sent by  {}\n {}".format(mero_message.name,mero_message.message)
+        mero_email = EmailMessage(subject=mero_message.subject,body=body,from_email='pravashpokhrel91@gmail.com',to=['soulboundviews@gmail.com'])
+        mero_email.send()
+        return redirect('home:index')
