@@ -28,17 +28,7 @@ class contact(models.Model):
     email =models.EmailField(max_length=255,blank=True,null=True)
     call =models.CharField(max_length=20,blank=True, null=True)
 
-class skiill_description(models.Model):
-     description = models.TextField(blank=True, null=True) 
-
-class Skill(models.Model):
-    name = models.CharField(max_length=50,blank=True, null=True)
-    percentage = models.PositiveIntegerField(blank=True, null=True)
-
-class cSkill(models.Model):
-    cname = models.CharField(max_length=50,blank=True, null=True)
-    cpercentage = models.PositiveIntegerField(blank=True, null=True)
-   
+ 
 class Testimonial(models.Model):
     photo = models.ImageField(upload_to='testimonials/', blank=True, null=True)
     person_name = models.CharField(max_length=255, blank=True, null=True)
@@ -104,3 +94,7 @@ class Message(models.Model):
     email = models.EmailField(blank=False, null=False )
     message = models.TextField()
     subject = models.CharField(max_length=255,blank=True,null=True)
+
+class Skill(models.Model):
+    name = models.CharField(max_length=100,blank=True, null=True)
+    

@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.core.mail import EmailMessage
-from .models import Hero,Abouts,socialplatform,Client,contact,Skill,Testimonial,services,skiill_description,cSkill,sdescription,Project,Summary, ProfessionalExperience, Education,Message
+from .models import Hero,Abouts,socialplatform,Client,contact,Skill,Testimonial,services,sdescription,Project,Summary, ProfessionalExperience, Education,Message
 
 # Create your views here.
 def display_page(request):
@@ -8,8 +8,6 @@ def display_page(request):
     abouts = Abouts.objects.first()
     clients = Client.objects.first()
     social_platform = socialplatform.objects.last()
-    skiill_descriptions =skiill_description.objects.first()
-    cskill = cSkill.objects.all()
     summaries = Summary.objects.all()
     experiences = ProfessionalExperience.objects.all()
     educations = Education.objects.all()
@@ -30,13 +28,11 @@ def display_page(request):
         'social_platform':social_platform,
         'clients':clients,
         'contacts':contacts,
-        'skiill_descriptions':skiill_descriptions,
         'projects': projects,
         'summaries': summaries,
         'experiences': experiences,
         'educations': educations,
         'skills': skills,
-        'cskills':cskill,
         'testimonials': testimonials,
         'services': service_list,
         'sdescriptions': sdescription_list,

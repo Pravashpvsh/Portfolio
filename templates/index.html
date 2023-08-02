@@ -184,50 +184,7 @@
       </div>
     </section><!-- End Facts Section -->
 
-    <!-- ======= Skills Section ======= -->
-    <section id="skills" class="skills section-bg">
-      <div class="container" data-aos="fade-up">
 
-        <div class="section-title">
-          <h2>Skills</h2>
-          <p>{{ skiill_descriptions.description }}</p>
-        </div>
-
-        <div class="row skills-content">
-
-          <div class="col-lg-6">
-            {% for skill in skills %}
-            <div class="progress">
-              <span class="skill">{{ skill.name }}<i class="val">{{ skill.percentage }}%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="{{ skill.percentage }}" aria-valuemin="0"
-                  aria-valuemax="100"></div>
-              </div>
-            </div>
-            {% endfor %}
-
-          </div>
-
-          <div class="col-lg-6">
-            {% for cskill in cskills %}
-            <div class="progress">
-              <span class="skill">{{ cskill.cname }} <i class="val">{{ cskill.cpercentage }}%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="{{ cskill.cpercentage }}" aria-valuemin="0"
-                  aria-valuemax="100"></div>
-              </div>
-            </div>
-            {% endfor %}
-
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Skills Section -->
-
-    
- <!-- ======= Resume Section ======= -->
  <!-- ======= Resume Section ======= -->
 <section id="resume" class="resume">
   <div class="container" data-aos="fade-up">
@@ -271,7 +228,16 @@
                   </ul>
               </div>
               {% endfor %}
-          </div>
+          
+          <div class="col-lg-6">
+            <h3 class="resume-title">Skill</h3>
+            {% for skills in skills %}
+            <div class="resume-item">
+                    <li>{{skills.name }}</li>
+                </ul>
+            </div>
+            {% endfor %}
+        </div>
       </div>
 
   </div>
