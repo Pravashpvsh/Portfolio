@@ -35,7 +35,7 @@ class Testimonial(models.Model):
     designation = models.CharField(max_length=255, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
 
-class Abouts(models.Model):
+class Abouts(models.Model): 
     photo = models.ImageField(upload_to='Abouts/', blank=True, null=True)
     title = models.CharField(max_length=255,blank=True, null=True)
     title_description =models.CharField(max_length=255,blank=True, null=True)
@@ -47,6 +47,7 @@ class Abouts(models.Model):
     age = models.PositiveIntegerField(blank=True, null=True)
     degree = models.CharField(max_length=100,blank=True, null=True)
     email = models.EmailField(blank=True, null=True)
+   
     
 
 class sdescription(models.Model):
